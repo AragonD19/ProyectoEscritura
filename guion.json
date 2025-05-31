@@ -1,0 +1,378 @@
+{
+  "inicio": {
+    "id": "inicio",
+    "texto": "Eres el detective Alex Carter, contratado para resolver el misterioso robo del 'Diamante Eterno'. Tres sospechosos tienen motivos y oportunidades: Lucía Varela, Marco Salinas y Diego Rojas.",
+    "imagen": "images/Inicio.jpg",
+    "opciones": [
+      {
+        "texto": "Investigar a Lucía Varela (Restauradora)",
+        "siguienteId": "lucia_1"
+      },
+      {
+        "texto": "Investigar a Marco Salinas (Organizador de subastas)",
+        "siguienteId": "marco_1"
+      },
+      {
+        "texto": "Investigar a Diego Rojas (Trabajador/Exconvicto)",
+        "siguienteId": "diego_1"
+      }
+    ]
+  },
+  "lucia_1": {
+    "id": "lucia_1",
+    "texto": "Decides investigar a Lucía (Restauradora de arte en el museo), cuya experiencia con los sistemas de seguridad del museo la hace sospechosa. En su taller, encuentras un plano de la vitrina del Diamante con anotaciones sobre cómo funcionan las alarmas. También descubres un recibo de un proveedor de herramientas de precisión, fechado días antes del robo. Confrontas a Lucía, quien insiste en que los planos son parte de su trabajo de restauración y el recibo es para restaurar una pintura.",
+    "imagen": "images/lucia_taller.jpg",
+    "opciones": [
+      {
+        "texto": "Creerle y pedir su ayuda para investigar a Marco",
+        "siguienteId": "lucia_creer_marco"
+      },
+      {
+        "texto": "Desconfiar y seguirla después del trabajo",
+        "siguienteId": "lucia_seguir"
+      }
+    ]
+  },
+  "lucia_creer_marco": {
+    "id": "lucia_creer_marco",
+    "texto": "Mientras investigas con Lucía, descubres que Marco tenía acceso a planos del museo que solo la directora debía tener. Algo no cuadra.",
+    "opciones": [
+      {
+        "texto": "Investigar a la directora del museo",
+        "siguienteId": "entrelazada_1"
+      },
+      {
+        "texto": "Seguir a Marco discretamente",
+        "siguienteId": "seguir_diego_noche"
+      }
+    ]
+  },
+  "lucia_seguir": {
+    "id": "lucia_seguir",
+    "texto": "La sigues hasta un almacén en las afueras. Dentro, encuentras un taller secreto con una réplica del Diamante Eterno. Lucía te descubre y confiesa que Marco la contrató para crear la réplica, pero jura que no robó el original. Dice que Diego Rojas podría estar involucrado, ya que lo vio merodeando cerca de la vitrina antes del robo.",
+    "imagen": "images/almacen.jpg",
+    "opciones": [
+      {
+        "texto": "Tenderle una trampa a Marco",
+        "siguienteId": "lucia_trampa_marco"
+      },
+      {
+        "texto": "Confrontar a Diego",
+        "siguienteId": "lucia_confrontar_diego"
+      },
+      {
+        "texto": "Arrestar a Lucía y seguir solo",
+        "siguienteId": "lucia_arrestar"
+      }
+    ]
+  },
+  "lucia_confrontar_diego": {
+    "id": "lucia_confrontar_diego",
+    "texto": "Interrogas a Diego en su oficina de seguridad. Admite que estuvo cerca de la vitrina, pero dice que fue para probar las alarmas, no para robar. Sugiere que Marco tiene un comprador extranjero listo para el diamante. Decides investigar las conexiones de Marco, pero recibes un mensaje anónimo que te advierte: 'No confíes en Diego, él nunca dejó el bajo mundo.'",
+    "opciones": [
+      {
+        "texto": "Ignorar el mensaje y tender trampa a Marco",
+        "siguienteId": "lucia_trampa_marco"
+      },
+      {
+        "texto": "Seguir a Diego para verificar sus conexiones",
+        "siguienteId": "seguir_diego_noche"
+      }
+    ]
+  },
+  "lucia_trampa_marco": {
+    "id": "lucia_trampa_marco",
+    "texto": "Organizas una trampa con ayuda de Lucía. Marco aparece, pero escapa en medio de una falsa alarma. Lucía parece sorprendida, pero algo en su reacción no convence.",
+    "opciones": [
+      {
+        "texto": "Investigar la reacción de Lucía",
+        "siguienteId": "marco_escapar_lucia"
+      },
+      {
+        "texto": "Revisar las cámaras del almacén",
+        "siguienteId": "diego_ir_tras_marco"
+      }
+    ]
+  },
+  "lucia_arrestar": {
+    "id": "lucia_arrestar",
+    "texto": "Lucía es arrestada por falsificación. En su teléfono encuentras mensajes con coordenadas y nombres codificados.",
+    "opciones": [
+      {
+        "texto": "Seguir la pista de los mensajes",
+        "siguienteId": "entrelazada_1"
+      }
+    ]
+  },
+  "seguir_diego_noche": {
+    "id": "seguir_diego_noche",
+    "texto": "Rastreas a Diego hasta un club nocturno frecuentado por criminales. Lo ves negociando con un contacto conocido en el mercado negro. Lo confrontas, y Diego revela que robó el diamante para saldar una deuda con la mafia, pero lo perdió cuando Marco lo traicionó y se lo robó. Te ofrece ayudarte a recuperar el diamante si lo dejas ir.",
+    "imagen": "images/club_nocturno.jpg",
+    "opciones": [
+      {
+        "texto": "Trabajar con Diego para atrapar a Marco",
+        "siguienteId": "trabajar_diego"
+      },
+      {
+        "texto": "Arrestar a Diego y buscar a Marco solo",
+        "siguienteId": "arrestar_diego"
+      }
+    ]
+  },
+  "trabajar_diego": {
+    "id": "trabajar_diego",
+    "texto": "Diego te lleva a una subasta secreta de Marco. Logras infiltrarte y encuentras el diamante, pero Marco te descubre. En un enfrentamiento, Diego te traiciona y huye con el diamante, dejando a Marco herido. Arrestas a Marco, pero el diamante se pierde nuevamente.",
+    "opciones": [],
+    "final": "final_1"
+  },
+  "arrestar_diego": {
+    "id": "arrestar_diego",
+    "texto": "Arrestas a Diego, pero sin su ayuda el rastro de Marco se enfría.",
+    "opciones": []
+  },
+  "final_1": {
+    "id": "final_1",
+    "texto": "Final 1: Traición y Derrota. Marco es arrestado, pero Diego y el diamante desaparecen. Tu reputación sufre.",
+    "imagen": "images/derrotaMarco.jpg",
+    "opciones": []
+  },
+  "marco_1": {
+    "id": "marco_1",
+    "texto": "Te centras en Marco Salinas, cuya casa de subastas tiene un historial turbio. Revisas sus registros financieros y encuentras pagos a una empresa de seguridad vinculada a Diego Rojas. También descubres un correo cifrado que menciona una 'joya única' para un comprador anónimo. Decides infiltrarte en una de sus subastas exclusivas, disfrazado como un coleccionista. En la subasta, notas que Marco evita hablar de joyas y parece ansioso. Interceptas una conversación donde menciona a Lucía Varela, insinuando que ella tiene información sobre el diamante. Sin embargo, un guardia te reconoce como intruso y te persigue.",
+    "imagen": "images/subasta.jpg",
+    "opciones": [
+      {
+        "texto": "Escapar y seguir a Lucía",
+        "siguienteId": "marco_escapar_lucia"
+      },
+      {
+        "texto": "Enfrentar al guardia y exigir hablar con Marco",
+        "siguienteId": "marco_enfrentar_guardia"
+      }
+    ]
+  },
+  "marco_escapar_lucia": {
+    "id": "marco_escapar_lucia",
+    "texto": "Huyes de la subasta y sigues a Lucía hasta su taller. La confrontas, y ella admite que creó una réplica del diamante para Marco, pero dice que él la engañó y se quedó con el original. Lucía te ofrece ayudarte a recuperar el diamante si la proteges de Marco.",
+    "opciones": [
+      {
+        "texto": "Aceptar su ayuda",
+        "siguienteId": "marco_aceptar_ayuda_lucia"
+      },
+      {
+        "texto": "Rechazarla y buscar pruebas en la casa de subastas",
+        "siguienteId": "marco_rechazar_lucia"
+      }
+    ]
+  },
+  "marco_aceptar_ayuda_lucia": {
+    "id": "marco_aceptar_ayuda_lucia",
+    "texto": "Con Lucía, organizas una falsa entrega del diamante para atraer a Marco. Durante la operación, Marco aparece con Diego, revelando que trabajan juntos. Diego desactivó las alarmas del museo, y Marco planeó vender el diamante. Los enfrentas, pero Lucía te traiciona, roba el diamante y huye con Diego.",
+    "imagen": "images/trampa.jpg",
+    "opciones": [
+      {
+        "texto": "Perseguir a Lucía",
+        "siguienteId": "marco_perseguir_lucia"
+      },
+      {
+        "texto": "Perseguir a Diego",
+        "siguienteId": "marco_perseguir_diego"
+      },
+      {
+        "texto": "Arrestar a Marco y dejar escapar a los otros",
+        "siguienteId": "marco_arrestar"
+      }
+    ]
+  },
+  "marco_perseguir_lucia": {
+    "id": "marco_perseguir_lucia",
+    "texto": "Sigues a Lucía hasta un aeropuerto privado. En un enfrentamiento, la arrestas y recuperas el diamante, pero Diego escapa. Descubres que Lucía planeaba vender el diamante para financiar una nueva vida en el extranjero.",
+    "opciones": [],
+    "final": "final_2"
+  },
+  "final_2": {
+    "id": "final_2",
+    "texto": "Final 2: Victoria Parcial. El diamante vuelve al museo. Lucía es encarcelada. Diego sigue libre.",
+    "imagen": "images/DerrotaLucia.jpg",
+    "opciones": []
+  },
+  "diego_1": {
+    "id": "diego_1",
+    "texto": "Optas por investigar a Diego Rojas, cuyo pasado criminal y rol en la seguridad del museo lo hacen sospechoso. Revisas las grabaciones de seguridad y ves a Diego desactivando una alarma minutos antes del robo. También encuentras un mensaje en su teléfono que menciona un encuentro con Marco Salinas. Lo interrogas, y Diego dice que estaba probando las alarmas y que Marco lo contactó para un 'trabajo', pero se negó.",
+    "imagen": "images/seguridad.jpg",
+    "opciones": [
+      {
+        "texto": "Pedirle que te ayude con Marco",
+        "siguienteId": "diego_ayudar_marco"
+      },
+      {
+        "texto": "Seguirlo para confirmar sus movimientos",
+        "siguienteId": "diego_seguirlo"
+      }
+    ]
+  },
+  "diego_seguirlo": {
+    "id": "diego_seguirlo",
+    "texto": "Lo sigues hasta un almacén donde se reúne con Lucía Varela. Los escuchas discutir sobre el diamante y una deuda con un traficante. Parece que trabajan juntos, pero no está claro quién tiene el diamante.",
+    "imagen": "images/reunion.jpg",
+    "opciones": [
+      {
+        "texto": "Confrontarlos",
+        "siguienteId": "diego_confrontar"
+      },
+      {
+        "texto": "Esperar y seguir a uno después",
+        "siguienteId": "diego_seguir_uno"
+      }
+    ]
+  },
+  "diego_confrontar": {
+    "id": "diego_confrontar",
+    "texto": "Los enfrentas, y Lucía acusa a Diego de obligarla a desactivar las alarmas, mientras Diego dice que Lucía lo manipuló para robar el diamante. Durante la discusión, recibes un mensaje anónimo con una foto del diamante en una subasta de Marco.",
+    "opciones": [
+      {
+        "texto": "Ir tras Marco y dejar a Lucía y Diego bajo custodia",
+        "siguienteId": "diego_ir_tras_marco"
+      },
+      {
+        "texto": "Interrogar más a Lucía y Diego",
+        "siguienteId": "diego_interrogar"
+      }
+    ]
+  },
+  "diego_ir_tras_marco": {
+    "id": "diego_ir_tras_marco",
+    "texto": "Te diriges a la subasta de Marco y lo encuentras intentando vender el diamante. Lo arrestas, pero el comprador extranjero escapa con el diamante. Marco confiesa que trabajó con Lucía y Diego, pero asegura que el comprador era el verdadero cerebro del robo.",
+    "opciones": [
+      {
+        "texto": "Perseguir al comprador",
+        "siguienteId": "diego_perseguir_comprador"
+      },
+      {
+        "texto": "Volver a interrogar a Lucía y Diego",
+        "siguienteId": "diego_volver_interrogar"
+      }
+    ]
+  },
+  "diego_perseguir_comprador": {
+    "id": "diego_perseguir_comprador",
+    "texto": "Rastreas al comprador hasta un yate en el puerto. Tras un enfrentamiento, recuperas el diamante y arrestas al comprador, quien resulta ser un coleccionista obsesionado con joyas raras. Sin embargo, Lucía y Diego son liberados por falta de pruebas.",
+    "opciones": [],
+    "final": "final_3"
+  },
+  "final_3": {
+    "id": "final_3",
+    "texto": "Final 3: Triunfo a Medias. Diamante recuperado. Comprador preso. Lucía y Diego libres.",
+    "imagen": "images/Diamante.jpg",
+    "opciones": []
+  },
+  "entrelazada_1": {
+    "id": "entrelazada_1",
+    "texto": "Descubres que Elena Torres, directora del museo, manipuló a todos para robar el diamante.",
+    "imagen": "images/elena.jpg",
+    "opciones": [
+      {
+        "texto": "Confrontarla con las pruebas",
+        "siguienteId": "entrelazada_confrontar"
+      },
+      {
+        "texto": "Usar a Lucía para tenderle una trampa",
+        "siguienteId": "entrelazada_trampa_lucia"
+      }
+    ]
+  },
+  "entrelazada_trampa_lucia": {
+    "id": "entrelazada_trampa_lucia",
+    "texto": "Convences a Lucía para tender una trampa a Elena. Logras arrestarla y recuperar el diamante.",
+    "opciones": [],
+    "final": "final_4"
+  },
+  "final_4": {
+    "id": "final_4",
+    "texto": "Final 4: Resolución Completa. Elena, Lucía, Diego y Marco son arrestados. El diamante vuelve al museo.",
+    "imagen": "images/Diamante.jpg",
+    "opciones": []
+  },
+  "marco_enfrentar_guardia": {
+    "id": "marco_enfrentar_guardia",
+    "texto": "El guardia accede a dejarte hablar con Marco. En la conversación, Marco niega todo y dice que Diego y Lucía están involucrados.",
+    "opciones": [
+      {
+        "texto": "Interrogar más a Marco",
+        "siguienteId": "diego_volver_interrogar"
+      },
+      {
+        "texto": "Seguir a Diego por tu cuenta",
+        "siguienteId": "seguir_diego_noche"
+      }
+    ]
+  },
+  "marco_rechazar_lucia": {
+    "id": "marco_rechazar_lucia",
+    "texto": "Decides no confiar en Lucía. Encuentras una sala secreta en la casa de subastas donde se guarda una réplica del diamante.",
+    "opciones": [
+      {
+        "texto": "Reportar el hallazgo y pedir refuerzos",
+        "siguienteId": "entrelazada_1"
+      },
+      {
+        "texto": "Esperar al comprador en la casa de subastas",
+        "siguienteId": "diego_ir_tras_marco"
+      }
+    ]
+  },
+  "diego_ayudar_marco": {
+    "id": "diego_ayudar_marco",
+    "texto": "Diego acepta ayudarte con reservas. Planean interceptar una venta en curso organizada por Marco.",
+    "opciones": [
+      {
+        "texto": "Acompañar a Diego a la subasta",
+        "siguienteId": "trabajar_diego"
+      },
+      {
+        "texto": "Usar a Diego como señuelo y actuar por tu cuenta",
+        "siguienteId": "arrestar_diego"
+      }
+    ]
+  },
+  "diego_seguir_uno": {
+    "id": "diego_seguir_uno",
+    "texto": "Decides seguir a Lucía. Ella entra al museo por una puerta trasera con una tarjeta de acceso.",
+    "opciones": [
+      {
+        "texto": "Investigar cómo obtuvo acceso",
+        "siguienteId": "entrelazada_1"
+      },
+      {
+        "texto": "Confrontar a la directora del museo",
+        "siguienteId": "entrelazada_confrontar"
+      }
+    ]
+  },
+  "diego_interrogar": {
+    "id": "diego_interrogar",
+    "texto": "Lucía se quiebra y admite que la directora del museo los usó a todos como peones. Diego confirma la historia.",
+    "opciones": [
+      {
+        "texto": "Buscar pruebas contra la directora",
+        "siguienteId": "entrelazada_1"
+      }
+    ]
+  },
+  "diego_volver_interrogar": {
+    "id": "diego_volver_interrogar",
+    "texto": "Presionas más a Lucía y Diego. Mencionan pagos misteriosos desde cuentas del museo a terceros en el extranjero.",
+    "opciones": [
+      {
+        "texto": "Confrontar a la directora",
+        "siguienteId": "entrelazada_confrontar"
+      }
+    ]
+  },
+  "entrelazada_confrontar": {
+    "id": "entrelazada_confrontar",
+    "texto": "Confrontas a Elena con las pruebas. Intenta huir, pero la detienes con ayuda de Lucía y Diego, quienes colaboran para limpiar sus nombres.",
+    "opciones": [],
+    "final": "final_4"
+  }
+}

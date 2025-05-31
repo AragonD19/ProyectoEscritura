@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Robo del Diamante Eterno</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-4">
+  <div id="game-container" class="bg-white rounded-lg shadow-lg p-6 max-w-2xl w-full">
+    <h1 class="text-2xl font-bold mb-4 text-center text-gray-800">El Robo del Diamante</h1>
+    <img id="story-image" class="w-full h-auto rounded-lg mb-4 hidden" alt="Escena de la historia" onerror="this.classList.add('hidden')">
+    <div id="story-text" class="text-gray-700 mb-6"></div>
+    <div id="options" class="flex flex-col gap-2"></div>
+    <button id="back-button" class="mt-2 bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 hidden">Volver</button>
+    <button id="restart-button" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 hidden">Reiniciar</button>
+  </div>
+
+  <script>
+    const storyText = document.getElementById('story-text');
+    const optionsContainer = document.getElementById('options');
+    const restartButton = document.getElementById('restart-button');
+    const backButton = document.getElementById('back-button');
+    const storyImage = document.getElementById('story-image');
+
+    let currentNodeId = 'inicio';
+    let storyData = null;
+    let historyStack = [];
+
+    async function loadStoryData() {
+      try {
+        const response = await fetch('guion.json');
+        if (!response.ok) {
+          throw new Error(`No se pudo cargar guion.json: ${response.status} ${response.statusText}`);
+        }
+        storyData = await response.json();
+        displayNode(currentNodeId);
+      } catch (error) {
+        console.error('Error fetching guion.json:', error);
+        storyText.textContent = `Error al cargar la historia: ${error.message}. Asegúrate de que guion.json esté en la misma carpeta y se sirva a través de un servidor local (por ejemplo, python -m http.server).`;
+        optionsContainer.innerHTML = '';
+        restartButton.classList.remove('hidden');
+        storyImage.classList.add('hidden');
+      }
+    }
+
+    function displayNode(nodeId) {
+      if (!storyData) {
+        storyText.textContent = 'Cargando la historia...';
+        storyImage.classList.add('hidden');
+        return;
+      }
+
+      const node = storyData[nodeId];
+      if (!node) {
+        storyText.textContent = `Error: Nodo "${nodeId}" no encontrado en guion.json.`;
+        console.error(`Node "${nodeId}" not found in storyData.`);
+        optionsContainer.innerHTML = '';
+        restartButton.classList.remove('hidden');
+        storyImage.classList.add('hidden');
+        return;
+      }
+
+      storyText.textContent = node.texto;
+
+      if (node.imagen) {
+        storyImage.src = node.imagen;
+        storyImage.classList.remove('hidden');
+      } else {
+        storyImage.classList.add('hidden');
+      }
+
+      optionsContainer.innerHTML = '';
+
+      if (node.opciones.length === 0) {
+        if (node.final) {
+          const finalNode = storyData[node.final];
+          if (finalNode) {
+            storyText.textContent = finalNode.texto;
+            if (finalNode.imagen) {
+              storyImage.src = finalNode.imagen;
+              storyImage.classList.remove('hidden');
+            } else {
+              storyImage.classList.add('hidden');
+            }
+          } else {
+            storyText.textContent = `Error: Nodo final "${node.final}" no encontrado.`;
+            console.error(`Final node "${node.final}" not found.`);
+            storyImage.classList.add('hidden');
+          }
+        } else if (node.nota) {
+          storyText.textContent += ` (${node.nota})`;
+          storyImage.classList.add('hidden');
+        }
+        restartButton.classList.remove('hidden');
+        backButton.classList.toggle('hidden', historyStack.length === 0);
+        return;
+      }
+
+      node.opciones.forEach(option => {
+        const button = document.createElement('button');
+        button.textContent = option.texto;
+        button.className = 'bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600';
+        button.addEventListener('click', () => {
+          if (option.siguienteId) {
+            historyStack.push(currentNodeId);
+            currentNodeId = option.siguienteId;
+            displayNode(currentNodeId);
+          } else {
+            console.error(`No siguienteId for option: ${option.texto}`);
+          }
+        });
+        optionsContainer.appendChild(button);
+      });
+
+      restartButton.classList.add('hidden');
+      backButton.classList.toggle('hidden', historyStack.length === 0);
+    }
+
+    backButton.addEventListener('click', () => {
+      if (historyStack.length > 0) {
+        currentNodeId = historyStack.pop();
+        displayNode(currentNodeId);
+      }
+    });
+
+    restartButton.addEventListener('click', () => {
+      currentNodeId = 'inicio';
+      historyStack = [];
+      loadStoryData();
+    });
+
+    loadStoryData();
+  </script>
+</body>
+</html>
